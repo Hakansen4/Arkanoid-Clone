@@ -1,3 +1,6 @@
-public readonly struct EV_OpenGameplayMenu
+namespace Events.Scenes
 {
+    public readonly struct EV_OpenGameplayMenu
+    {
+    }
 }

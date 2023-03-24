@@ -1,4 +1,7 @@
-public readonly struct EV_OpenMainMenu
+namespace Events.Scenes
 {
+    public readonly struct EV_OpenMainMenu
+    {
 
+    }
 }

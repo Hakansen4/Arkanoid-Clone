@@ -6,6 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using Ambrosia.EventBus;
 using System;
+using Events.Scenes;
 
 public class SceneLoader : MonoBehaviour
 {
