@@ -21,10 +21,12 @@ public class SceneLoader : MonoBehaviour
     private void OnEnable()
     {
         EventBus<EV_OpenGameplayMenu>.AddListener(StartGame);
+        EventBus<EV_OpenMainMenu>.AddListener(OpenMainMenu);
     }
     private void OnDisable()
     {
         EventBus<EV_OpenGameplayMenu>.RemoveListener(StartGame);
+        EventBus<EV_OpenMainMenu>.AddListener(OpenMainMenu);
     }
 
     private void StartGame(object sender, EV_OpenGameplayMenu @event)
@@ -32,7 +34,7 @@ public class SceneLoader : MonoBehaviour
         Addressables.LoadSceneAsync(GameplayScene, UnityEngine.SceneManagement.LoadSceneMode.Single).Completed += SceneLoadComplete;
     }
 
-    private void Start()
+    private void OpenMainMenu(object sender, EV_OpenMainMenu @event)
     {
         Addressables.LoadSceneAsync(MainMenuScene, UnityEngine.SceneManagement.LoadSceneMode.Single).Completed += SceneLoadComplete;
     }
