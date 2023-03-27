@@ -25,6 +25,7 @@ public class ObjectPool : MonoBehaviour
         {
             if(!poolList[i].activeInHierarchy)
             {
+                poolList[i].SetActive(true);
                 return poolList[i];
             }
         }
