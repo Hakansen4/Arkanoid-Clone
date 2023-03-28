@@ -2,33 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool<T> where T : IPoolable
 {
-    private List<GameObject> poolList;
-    public GameObject pooledObject;
-    public int amountOfPool;
-
-    private void Awake()
+    private T[] Pool;
+    private GameObject Prefab;
+    private int amountOfPool;
+    private int index;
+    public ObjectPool(int AmountOfPool,GameObject PooledObject)
     {
-        poolList = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountOfPool; i++)
+        amountOfPool = AmountOfPool;
+        Prefab = PooledObject;
+        Pool = new T[amountOfPool];
+        index = -1;
+        CreatePool(0,amountOfPool);
+    }
+    private void CreatePool(int firstIndex, int LastIndex)
+    {
+        T tmp;
+        for (int i = firstIndex; i < LastIndex; i++)
         {
-            tmp = Instantiate(pooledObject);
-            tmp.SetActive(false);
-            poolList.Add(tmp);
+            tmp = GameObject.Instantiate(Prefab).GetComponent<T>();
+            tmp.DeActivate();
+            Pool[i] = tmp;
         }
     }
-    public GameObject GetPooledObject()
+    public T GetPooledObject()
     {
+        if(index < Pool.Length - 1)
+        {
+            index++;
+            Pool[index].Activate();
+            return Pool[index];
+        }
+        else
+        {
+            index++;
+            return ExtendPool();
+        }
+    }
+
+    private T ExtendPool()
+    {
+        ExtendArray();
+        CreatePool(index, amountOfPool);
+        Pool[index].Activate();
+        return Pool[index];
+    }
+    private void ExtendArray()
+    {
+        T[] tmp = new T[amountOfPool * 2];
         for (int i = 0; i < amountOfPool; i++)
         {
-            if(!poolList[i].activeInHierarchy)
-            {
-                poolList[i].SetActive(true);
-                return poolList[i];
-            }
+            tmp[i] = Pool[i];
         }
-        return null;
+        Pool = tmp;
+        amountOfPool *= 2;
+    }
+
+    public void ObjectDeactivated(T obj)
+    {
+        index--;
+        Pool[index + 1] = obj;
     }
 }
