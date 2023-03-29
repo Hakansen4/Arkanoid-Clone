@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ambrosia.EventBus;
-using Events.Features;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class ColorFeature : MonoBehaviour, IColorful

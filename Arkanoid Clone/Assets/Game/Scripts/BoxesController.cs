@@ -13,6 +13,7 @@ public class BoxesController : MonoBehaviour
     public float StarterYPos;
     public int Size_X;
     public int Size_Y;
+    public int BoxTweenDistance;
     private ObjectPool<BoxController> BoxPool;
 
     private void Awake()
@@ -27,6 +28,7 @@ public class BoxesController : MonoBehaviour
     {
         _BoxList = new List<GameObject>();
         BoxPool = new ObjectPool<BoxController>(Size_X*Size_Y,_BoxPrefab);
+        StarterYPos += BoxTweenDistance;
         for (int i = 0; i < Size_Y; i++)
         {
             for (int j = 0; j < Size_X; j++)
