@@ -14,6 +14,7 @@ public class BoxesController : MonoBehaviour
     public int Size_X;
     public int Size_Y;
     public int BoxTweenDistance;
+    public int BoxTweenDuration;
     private ObjectPool<BoxController> BoxPool;
 
     private void Awake()
@@ -36,6 +37,7 @@ public class BoxesController : MonoBehaviour
                 var box = BoxPool.GetPooledObject();
                 box.gameObject.transform.position = new Vector3(StarterXPos + (j * distanceBtwBoxes_X)
                                                     , StarterYPos - (i * distanceBtwBoxes_Y), 0);
+                box.Init(BoxTweenDistance,BoxTweenDuration);
                 _BoxList.Add(box.gameObject);
             }
         }

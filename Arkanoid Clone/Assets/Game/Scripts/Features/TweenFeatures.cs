@@ -6,24 +6,42 @@ using Ambrosia.EventBus;
 using Events.Features;
 using System;
 
-public class TweenFeatures : MonoBehaviour, ITweenable
+public class TweenFeatures : ITweenable
 {
-    public int MoveSize;
-    public float Duration;
+    private int MoveSize;
+    private float Duration;
     private float MoveTarget;
     private Vector3 startingPosition;
-    private void Start()
+    private Transform transform;
+    //private void Start()
+    //{
+    //    if (Created)
+    //        return;
+
+    //    startingPosition = transform.position;
+    //    MoveTarget = transform.position.y - MoveSize;
+    //}
+
+    //public void Init(int TweenDistance)
+    //{
+    //    startingPosition = transform.position;
+    //    MoveTarget = transform.position.y - TweenDistance;
+    //    Created = true;
+    //}
+    public TweenFeatures(int TweenDistance,Transform transform,int TweenDuration)
     {
+        this.transform = transform;
+        MoveSize = TweenDistance;
+        Duration = TweenDuration;
         startingPosition = transform.position;
         MoveTarget = transform.position.y - MoveSize;
     }
-
-    private void OnEnable()
+    public void SubEvents()
     {
         EventBus<EV_SetTweening>.AddListener(StartTweening);
     }
 
-    private void OnDisable()
+    public void UnSubEvents()
     {
         EventBus<EV_SetTweening>.RemoveListener(StartTweening);
     }

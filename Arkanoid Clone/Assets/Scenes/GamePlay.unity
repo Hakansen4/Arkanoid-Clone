@@ -526,11 +526,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 429882820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0631ef819e039bd41ae86bc987de057d, type: 3}
+  m_Script: {fileID: 11500000, guid: ab6d87f7fd1ead24bb09e56641181699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSize: 12
-  Duration: 2
+  TweenDistance: 12
+  TweenDuration: 2
 --- !u!1 &510410900
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +811,7 @@ MonoBehaviour:
   Size_X: 9
   Size_Y: 5
   BoxTweenDistance: 12
+  BoxTweenDuration: 2
 --- !u!4 &1153739886
 Transform:
   m_ObjectHideFlags: 0

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BoxController : MonoBehaviour,IPoolable
 {
+    private TweenFeatures _TweenFeature;
+
+    public void Init(int tweenDistance,int TweenDuration)
+    {
+        _TweenFeature = new TweenFeatures(tweenDistance, transform,TweenDuration);
+        _TweenFeature.SubEvents();
+    }
     public void Activate()
     {
         gameObject.SetActive(true);
@@ -11,6 +18,7 @@ public class BoxController : MonoBehaviour,IPoolable
 
     public void DeActivate()
     {
+        _TweenFeature?.UnSubEvents();
         gameObject.SetActive(false);
     }
     private void OnCollisionEnter2D(Collision2D collision)

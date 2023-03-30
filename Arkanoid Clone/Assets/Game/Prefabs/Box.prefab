@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5269084658796637744}
   - component: {fileID: 5115528567762767838}
   - component: {fileID: 7163729171242398823}
-  - component: {fileID: -4173349546181159537}
   - component: {fileID: 3597422693861142551}
   m_Layer: 0
   m_Name: Box
@@ -127,20 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Color: {fileID: 2100000, guid: 645ec66efbd7e0a4fbd8c2619a5556e4, type: 2}
---- !u!114 &-4173349546181159537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5269084658796637747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0631ef819e039bd41ae86bc987de057d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSize: 12
-  Duration: 2
 --- !u!114 &3597422693861142551
 MonoBehaviour:
   m_ObjectHideFlags: 0
