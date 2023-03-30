@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public readonly struct EV_SetTweening
+namespace Events.Features
 {
-    public readonly int TweenValue;
-    public readonly bool Randomizer;
-    public EV_SetTweening(int tweenValue,bool randomizer)
+    public readonly struct EV_SetTweening
     {
-        TweenValue = tweenValue;
-        Randomizer = randomizer;
+        public readonly int TweenValue;
+        public readonly bool Randomizer;
+        public EV_SetTweening(int tweenValue, bool randomizer)
+        {
+            TweenValue = tweenValue;
+            Randomizer = randomizer;
+        }
     }
 }

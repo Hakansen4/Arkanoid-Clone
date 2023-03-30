@@ -12,9 +12,13 @@ public class FeaturesInspectorEditor : Editor
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
 
+        if (GUILayout.Button("Start Game"))
+        {
+            myScript.StartGame();
+        }
 
-
-        if(GUILayout.Button("Set Color"))
+        GUILayout.Space(5);
+        if (GUILayout.Button("Set Color"))
         {
             myScript.SetColorEvent();
         }
