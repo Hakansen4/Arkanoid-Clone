@@ -4,35 +4,25 @@ using UnityEngine;
 using DG.Tweening;
 using Ambrosia.EventBus;
 using Events.Features;
-using System;
+using System.Collections;
 
 public class TweenFeatures : ITweenable
 {
     private int MoveSize;
+    private float StandartDuration;
     private float Duration;
+    private float MaxDuration;
+    private float MinDuration;
     private float MoveTarget;
     private Vector3 startingPosition;
     private Transform transform;
-    //private void Start()
-    //{
-    //    if (Created)
-    //        return;
-
-    //    startingPosition = transform.position;
-    //    MoveTarget = transform.position.y - MoveSize;
-    //}
-
-    //public void Init(int TweenDistance)
-    //{
-    //    startingPosition = transform.position;
-    //    MoveTarget = transform.position.y - TweenDistance;
-    //    Created = true;
-    //}
-    public TweenFeatures(int TweenDistance,Transform transform,int TweenDuration)
+    public TweenFeatures(int TweenDistance,Transform transform,int StandartTweenDuration,int MaxTweenDuration,int minTweenDuration)
     {
         this.transform = transform;
         MoveSize = TweenDistance;
-        Duration = TweenDuration;
+        StandartDuration = StandartTweenDuration;
+        MaxDuration = MaxTweenDuration;
+        MinDuration = minTweenDuration;
         startingPosition = transform.position;
         MoveTarget = transform.position.y - MoveSize;
     }
@@ -48,7 +38,18 @@ public class TweenFeatures : ITweenable
     private void StartTweening(object sender, EV_SetTweening @event)
     {
         transform.position = startingPosition;
+        Randomizer(@event.Randomizer);
         Tween((TweenType)@event.TweenValue);
+    }
+
+    private void Randomizer(bool value)
+    {
+        if(!value)
+        {
+            Duration = StandartDuration;
+            return;
+        }
+        Duration = Random.RandomRange(MinDuration, MaxDuration);
     }
 
     public void Tween(TweenType tween)

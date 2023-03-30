@@ -7,9 +7,9 @@ using Events.Features;
 public class FeaturesInspector : MonoBehaviour
 {
     [SerializeField] private TweenType typeTween;
-    public void SetTweenEvent(int value)
+    public void SetTweenEvent(int TweenValue,bool randomizer)
     {
-        EventBus<EV_SetTweening>.Emit(this, new EV_SetTweening(value));
+        EventBus<EV_SetTweening>.Emit(this, new EV_SetTweening(TweenValue, randomizer));
     }
     public void SetColorEvent()
     {

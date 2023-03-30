@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int TweenDistance;
-    [SerializeField] private int TweenDuration;
+    [SerializeField] private int StandartTweenDuration;
+    [SerializeField] private int MinTweenDuration;
+    [SerializeField] private int MaxTweenDuration;
 
     private TweenFeatures _TweenFeature;
     private void Awake()
     {
-        _TweenFeature = new TweenFeatures(TweenDistance, transform, TweenDuration);
+        _TweenFeature = new TweenFeatures(TweenDistance, transform, StandartTweenDuration,MaxTweenDuration,MinTweenDuration);
     }
     private void OnEnable()
     {

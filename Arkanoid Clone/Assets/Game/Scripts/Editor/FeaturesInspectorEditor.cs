@@ -6,16 +6,11 @@ using UnityEditor;
 [CustomEditor(typeof(FeaturesInspector))]
 public class FeaturesInspectorEditor : Editor
 {
-    SerializedProperty typeTween;
-    int value = 0;
-    private void OnEnable()
-    {
-        typeTween = serializedObject.FindProperty("typeTween");
-    }
+    int TweenValue = 0;
+    bool randomizer;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
-        serializedObject.Update();
 
 
 
@@ -23,12 +18,14 @@ public class FeaturesInspectorEditor : Editor
         {
             myScript.SetColorEvent();
         }
+        GUILayout.Space(5);
+        randomizer = GUILayout.Toggle(randomizer, "Randomizer");
         GUILayout.Space(2);
-        value = EditorGUILayout.IntSlider(value, 0, 3);
+        TweenValue = EditorGUILayout.IntSlider(TweenValue, 0, 3);
         GUILayout.Space(5);
         if(GUILayout.Button("Set Tweening"))
         {
-            myScript.SetTweenEvent(value);
+            myScript.SetTweenEvent(TweenValue, randomizer);
         }
     }
 }
