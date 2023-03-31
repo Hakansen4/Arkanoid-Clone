@@ -25,7 +25,10 @@ public class PlayerMovement
         transform.position = Vector2.MoveTowards(transform.position,
             new Vector2(Mathf.Clamp(Destination.x, -MoveRange, MoveRange), transform.position.y), Speed);
     }
-
+    public Vector2 GetMovementDestination()
+    {
+        return Destination;
+    }
     public void StartMovement()
     {
         StopMovement = false;

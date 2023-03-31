@@ -8,6 +8,7 @@ public class FeaturesInspectorEditor : Editor
 {
     int TweenValue = 0;
     bool randomizer;
+    bool ElasticPlayer;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -31,5 +32,8 @@ public class FeaturesInspectorEditor : Editor
         {
             myScript.SetTweenEvent(TweenValue, randomizer);
         }
+        GUILayout.Space(5);
+        ElasticPlayer = GUILayout.Toggle(ElasticPlayer, "Elastic Paddle");
+        myScript.SetPaddleElastic(ElasticPlayer);
     }
 }
