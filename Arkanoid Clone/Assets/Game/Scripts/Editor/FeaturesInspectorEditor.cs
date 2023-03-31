@@ -11,6 +11,8 @@ public class FeaturesInspectorEditor : Editor
     bool ElasticPlayer;
     bool BallScaleEffect;
     bool BallRotateEffect;
+    bool BallStretchEffect;
+    bool BallHitEffect;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -45,5 +47,13 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         BallRotateEffect = GUILayout.Toggle(BallRotateEffect, "Ball Rotate");
         myScript.SetBallRotate(BallRotateEffect);
+        GUILayout.Space(5);
+        GUILayout.Space(5);
+        BallStretchEffect = GUILayout.Toggle(BallStretchEffect, "Ball Stretch");
+        myScript.SetBallStretch(BallStretchEffect);
+        GUILayout.Space(5);
+        BallHitEffect = GUILayout.Toggle(BallHitEffect, "Ball Hit Effect");
+        myScript.SetBallHitEffect(BallHitEffect);
+
     }
 }

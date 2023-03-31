@@ -124,7 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Collision: {fileID: 5948672776943230797}
+  HitColor: {fileID: 2100000, guid: baea3a3edd914104ebdac92114979f55, type: 2}
+  ColorfulColor: {fileID: 2100000, guid: 7af2c686cabbbb44998b24083358deac, type: 2}
   ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
+  StretchAnimSize: {x: 0.25, y: 0.3, z: 1}
 --- !u!114 &4618304290199275425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _physic: {fileID: 9025964661040359607}
+  _renderer: {fileID: 9025964661040359601}
 --- !u!61 &9025964661040359605
 BoxCollider2D:
   m_ObjectHideFlags: 0

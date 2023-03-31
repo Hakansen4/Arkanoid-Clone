@@ -11,6 +11,8 @@ public class FeaturesInspector : MonoBehaviour
     bool ElasticPlayer;
     bool BallScaleEffect;
     bool BallRotateEffect;
+    bool BallStretchEffect;
+    bool BallHitEffect;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -47,6 +49,22 @@ public class FeaturesInspector : MonoBehaviour
         {
             BallRotateEffect = value;
             EventBus<EV_RotateBall>.Emit(this, new EV_RotateBall());
+        }
+    }
+    public void SetBallStretch(bool value)
+    {
+        if(BallStretchEffect != value)
+        {
+            BallStretchEffect = value;
+            EventBus<EV_StretchBall>.Emit(this, new EV_StretchBall());
+        }
+    }
+    public void SetBallHitEffect(bool value)
+    {
+        if(BallHitEffect != value)
+        {
+            BallHitEffect = value;
+            EventBus<EV_BallHitColor>.Emit(this, new EV_BallHitColor());
         }
     }
 }

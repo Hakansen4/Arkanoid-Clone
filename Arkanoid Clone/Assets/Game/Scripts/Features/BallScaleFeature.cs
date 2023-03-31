@@ -39,7 +39,7 @@ public class BallScaleFeature
     {
         if (!isActive)
             return;
-
+   
         transform.DOScale(ScaleSize, 0.05f).OnComplete(() => transform.DOScale(StarterScale, 0.05f));
     }
 }
