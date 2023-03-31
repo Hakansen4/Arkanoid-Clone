@@ -9,6 +9,8 @@ public class FeaturesInspectorEditor : Editor
     int TweenValue = 0;
     bool randomizer;
     bool ElasticPlayer;
+    bool BallScaleEffect;
+    bool BallRotateEffect;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -35,5 +37,13 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         ElasticPlayer = GUILayout.Toggle(ElasticPlayer, "Elastic Paddle");
         myScript.SetPaddleElastic(ElasticPlayer);
+        GUILayout.Space(5);
+        GUILayout.Space(5);
+        BallScaleEffect = GUILayout.Toggle(BallScaleEffect, "Ball Extra Scale");
+        myScript.SetBallScaleEffect(BallScaleEffect);
+        GUILayout.Space(5);
+        GUILayout.Space(5);
+        BallRotateEffect = GUILayout.Toggle(BallRotateEffect, "Ball Rotate");
+        myScript.SetBallRotate(BallRotateEffect);
     }
 }

@@ -9,6 +9,8 @@ public class FeaturesInspector : MonoBehaviour
 {
     [SerializeField] private TweenType typeTween;
     bool ElasticPlayer;
+    bool BallScaleEffect;
+    bool BallRotateEffect;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -28,6 +30,23 @@ public class FeaturesInspector : MonoBehaviour
         {
             ElasticPlayer = value;
             EventBus<EV_ElasticPaddle>.Emit(this, new EV_ElasticPaddle());
+        }
+    }
+    public void SetBallScaleEffect(bool value)
+    {
+        if(BallScaleEffect != value)
+        {
+            BallScaleEffect = value;
+            EventBus<EV_ScaleBall>.Emit(this, new EV_ScaleBall());
+        }
+    }
+    
+    public void SetBallRotate(bool value)
+    {
+        if(BallRotateEffect != value)
+        {
+            BallRotateEffect = value;
+            EventBus<EV_RotateBall>.Emit(this, new EV_RotateBall());
         }
     }
 }

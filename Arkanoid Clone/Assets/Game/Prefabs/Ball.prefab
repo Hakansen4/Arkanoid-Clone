@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 9025964661040359600}
   - component: {fileID: 9025964661040359601}
   - component: {fileID: 9025964661040359607}
+  - component: {fileID: -4685972114961293597}
   - component: {fileID: 4618304290199275425}
   - component: {fileID: 9025964661040359606}
+  - component: {fileID: 5948672776943230797}
   - component: {fileID: 9025964661040359605}
   m_Layer: 0
   m_Name: Ball
@@ -109,6 +111,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-4685972114961293597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025964661040359602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e158f654ea0cc7a41beb49d753f5c123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Collision: {fileID: 5948672776943230797}
+  ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
 --- !u!114 &4618304290199275425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +151,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
+--- !u!114 &5948672776943230797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025964661040359602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f597169e6b5274285390263e8879dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _physic: {fileID: 9025964661040359607}
 --- !u!61 &9025964661040359605
 BoxCollider2D:
   m_ObjectHideFlags: 0

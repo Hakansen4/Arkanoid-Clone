@@ -1,3 +1,6 @@
-public readonly struct EV_ElasticPaddle
+namespace Events.Features
 {
+    public readonly struct EV_ElasticPaddle
+    {
+    }
 }
