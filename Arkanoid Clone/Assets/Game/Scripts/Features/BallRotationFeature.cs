@@ -27,6 +27,7 @@ public class BallRotationFeature
     private void ChangeActivity(object sender, EV_RotateBall @event)
     {
         isActive = !isActive;
+        transform.rotation = Quaternion.Euler(Vector2.zero);
     }
 
     public void SetRotation(Vector2 velocity)
