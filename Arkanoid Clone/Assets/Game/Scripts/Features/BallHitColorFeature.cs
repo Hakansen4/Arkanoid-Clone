@@ -44,6 +44,9 @@ public class BallHitColorFeature
 
     public void ColorEffect()
     {
+        if (!isActive)
+            return;
+
         _Renderer.material = _HitColor;
         mono.StartCoroutine(ResetColor());
     }

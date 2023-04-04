@@ -5,7 +5,7 @@ public class BoxesController : MonoBehaviour
 {
     public static BoxesController instance;
 
-    private List<GameObject> _BoxList;
+    private List<BoxController> _BoxList;
     [SerializeField] private GameObject _BoxPrefab;
     public float distanceBtwBoxes_X;
     public float distanceBtwBoxes_Y;
@@ -29,24 +29,28 @@ public class BoxesController : MonoBehaviour
 
     private void Start()
     {
-        _BoxList = new List<GameObject>();
+        _BoxList = new List<BoxController>();
         BoxPool = new ObjectPool<BoxController>(Size_X*Size_Y,_BoxPrefab);
         StarterYPos += BoxTweenDistance;
         for (int i = 0; i < Size_Y; i++)
         {
             for (int j = 0; j < Size_X; j++)
             {
-                var box = BoxPool.GetPooledObject();
-                box.gameObject.transform.position = new Vector3(StarterXPos + (j * distanceBtwBoxes_X)
-                                                    , StarterYPos - (i * distanceBtwBoxes_Y), 0);
-                box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration);
-                _BoxList.Add(box.gameObject);
+                CreateBoxe(new Vector3(StarterXPos + (j * distanceBtwBoxes_X)
+                                            , StarterYPos - (i * distanceBtwBoxes_Y), 0));
             }
         }
     }
+    private void CreateBoxe(Vector3 position)
+    {
+        var box = BoxPool.GetPooledObject();
+        box.gameObject.transform.position = position;
+        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration);
+        _BoxList.Add(box);
+    }
     public void BoxDeactivated(BoxController box)
     {
-        _BoxList.Remove(box.gameObject);
+        _BoxList.Remove(box);
         BoxPool.ObjectDeactivated(box);
     }
 }
