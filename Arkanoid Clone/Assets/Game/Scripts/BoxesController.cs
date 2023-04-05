@@ -20,7 +20,7 @@ public class BoxesController : MonoBehaviour
     public float BoxShakeDuration;
     public float BoxShakeStrength;
     private ObjectPool<BoxController> BoxPool;
-
+    [SerializeField] private Material _Color;
     private void Awake()
     {
         if (instance == null)
@@ -47,7 +47,7 @@ public class BoxesController : MonoBehaviour
     {
         var box = BoxPool.GetPooledObject();
         box.gameObject.transform.position = position;
-        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength);
+        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength, _Color);
         _BoxList.Add(box);
     }
     public void BoxDeactivated(BoxController box)

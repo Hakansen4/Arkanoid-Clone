@@ -5,21 +5,26 @@ using UnityEngine;
 using Ambrosia.EventBus;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class ColorFeature : MonoBehaviour, IColorful
+public class ColorFeature : IColorful
 {
-    [SerializeField] private Material Color;
+    private Material Color;
+    private SpriteRenderer renderer;
     public Material _Color => Color;
-
-    private void OnEnable()
+    public ColorFeature(SpriteRenderer renderer,Material Color)
+    {
+        this.renderer = renderer;
+        this.Color = Color;
+    }
+    public void SubEvents()
     {
         EventBus<EV_SetColor>.AddListener(SetColor);
     }
-    private void OnDisable()
+    public void UnSubEvents()
     {
         EventBus<EV_SetColor>.RemoveListener(SetColor);
     }
     public void SetColor(object sender, EV_SetColor @event)
     {
-        GetComponent<SpriteRenderer>().material = _Color;
+        renderer.material = _Color;
     }
 }

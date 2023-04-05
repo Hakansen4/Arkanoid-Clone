@@ -17,10 +17,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float ElasticSpeed;
     [SerializeField] private float MaxScaleY;
     [SerializeField] private float MinScaleY;
+    [Header("Color Feature")]
+    [SerializeField] private Material Color;
     #endregion
 
     private TweenFeatures _TweenFeature;
     private PlayerElasticFeature _ElasticFeature;
+    private ColorFeature _ColorFeature;
     private PlayerMovement Movement;
     
     private void Awake()
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour
         Movement = new PlayerMovement(Speed, transform, MoveRange);
         _ElasticFeature = new PlayerElasticFeature(transform, MinScaleY, MaxScaleY, ElasticSpeed);
         _TweenFeature = new TweenFeatures(TweenDistance, transform, StandartTweenDuration,MaxTweenDuration,MinTweenDuration);
+        _ColorFeature = new ColorFeature(GetComponent<SpriteRenderer>(), Color);
     }
 
     private void Update()
@@ -39,11 +43,13 @@ public class PlayerController : MonoBehaviour
     {
         _TweenFeature.SubEvents();
         _ElasticFeature.SubEvents();
+        _ColorFeature.SubEvents();
     }
     private void OnDisable()
     {
         _TweenFeature.UnSubEvents();
         _ElasticFeature.UnSubEvents();
+        _ColorFeature.UnSubEvents();
     }
 
     public void StartGame()

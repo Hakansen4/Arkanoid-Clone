@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9025964661040359601}
   - component: {fileID: 9025964661040359607}
   - component: {fileID: -4685972114961293597}
-  - component: {fileID: 4618304290199275425}
   - component: {fileID: 9025964661040359606}
   - component: {fileID: 5948672776943230797}
   - component: {fileID: 9025964661040359605}
@@ -125,22 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Collision: {fileID: 5948672776943230797}
   HitColor: {fileID: 2100000, guid: baea3a3edd914104ebdac92114979f55, type: 2}
-  ColorfulColor: {fileID: 2100000, guid: 7af2c686cabbbb44998b24083358deac, type: 2}
+  ColorfulColor: {fileID: 2100000, guid: 95352acee4a830241b4ff65119be747f, type: 2}
   ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
   StretchAnimSize: {x: 0.25, y: 0.3, z: 1}
---- !u!114 &4618304290199275425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025964661040359602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04822b75450cf4f4bb7daed9bbb76bb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Color: {fileID: 2100000, guid: 95352acee4a830241b4ff65119be747f, type: 2}
 --- !u!114 &9025964661040359606
 MonoBehaviour:
   m_ObjectHideFlags: 0
