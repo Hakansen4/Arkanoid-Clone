@@ -17,6 +17,8 @@ public class BoxesController : MonoBehaviour
     public int BoxTweenDuration;
     public int MaxBoxTweenDuration;
     public int MinBoxTweenDuration;
+    public float BoxShakeDuration;
+    public float BoxShakeStrength;
     private ObjectPool<BoxController> BoxPool;
 
     private void Awake()
@@ -45,7 +47,7 @@ public class BoxesController : MonoBehaviour
     {
         var box = BoxPool.GetPooledObject();
         box.gameObject.transform.position = position;
-        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration);
+        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength);
         _BoxList.Add(box);
     }
     public void BoxDeactivated(BoxController box)

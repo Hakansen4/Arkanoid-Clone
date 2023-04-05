@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Ambrosia.EventBus;
+using Events.Others;
 public class BallCollision : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _physic;
@@ -37,6 +38,7 @@ public class BallCollision : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        EventBus<EV_BallCollide>.Emit(this, new EV_BallCollide());
         _RotateFeature.SetRotation(_physic.velocity);
         _StretchFeature.AnimateStretch();
         _ScaleFeature.ScaleEffect();

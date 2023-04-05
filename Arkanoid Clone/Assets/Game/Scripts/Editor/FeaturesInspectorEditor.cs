@@ -13,6 +13,8 @@ public class FeaturesInspectorEditor : Editor
     bool BallRotateEffect;
     bool BallStretchEffect;
     bool BallHitEffect;
+    bool ShakeBox;
+    bool ShakeBorder;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -54,6 +56,12 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         BallHitEffect = GUILayout.Toggle(BallHitEffect, "Ball Hit Effect");
         myScript.SetBallHitEffect(BallHitEffect);
+        GUILayout.Space(5);
+        ShakeBox = GUILayout.Toggle(ShakeBox, "Box Shake");
+        myScript.SetShakeBoxes(ShakeBox);
+        GUILayout.Space(5);
+        ShakeBorder = GUILayout.Toggle(ShakeBorder, "Border Shake");
+        myScript.SetShakeBorders(ShakeBorder);
 
     }
 }

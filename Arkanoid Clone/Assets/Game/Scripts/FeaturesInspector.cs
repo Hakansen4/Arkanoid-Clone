@@ -13,6 +13,8 @@ public class FeaturesInspector : MonoBehaviour
     bool BallRotateEffect;
     bool BallStretchEffect;
     bool BallHitEffect;
+    bool ShakeBoxEffect;
+    bool ShakeBorderEffect;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -65,6 +67,22 @@ public class FeaturesInspector : MonoBehaviour
         {
             BallHitEffect = value;
             EventBus<EV_BallHitColor>.Emit(this, new EV_BallHitColor());
+        }
+    }
+    public void SetShakeBoxes(bool value)
+    {
+        if(ShakeBoxEffect != value)
+        {
+            ShakeBoxEffect = value;
+            EventBus<EV_ShakeBox>.Emit(this, new EV_ShakeBox());
+        }
+    }
+    public void SetShakeBorders(bool value)
+    {
+        if(ShakeBorderEffect != value)
+        {
+            ShakeBorderEffect = value;
+            EventBus<EV_ShakeBorder>.Emit(this, new EV_ShakeBorder());
         }
     }
 }
