@@ -7,15 +7,18 @@ using System;
 
 public class BallControler : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Rigidbody2D _physic;
     [SerializeField] private SpriteRenderer _renderer;
-
     [SerializeField] private BallCollision _Collision;
+    [Header("Features")]
     [SerializeField] private Material HitColor;
     [SerializeField] private Material ColorfulColor;
     [SerializeField] private Vector3 ScaleAnimSize;
     [SerializeField] private Vector3 StretchAnimSize;
     [SerializeField] private float Speed;
+    [SerializeField] private int ParticleEffectPoolSize;
+    [SerializeField] private GameObject _ParticleObject;
     private BallMovement _Movement;
     private BalSfxController _SfxController;
     private ColorFeature _ColorFeature;
@@ -23,6 +26,7 @@ public class BallControler : MonoBehaviour
     private BallRotationFeature _RotateFeature;
     private BallStretchFeature _StretchFeature;
     private BallHitColorFeature _HitColorFeature;
+    private BallVfxController _VfxController;
     private void Awake()
     {
         _SfxController = new BalSfxController();
@@ -32,6 +36,7 @@ public class BallControler : MonoBehaviour
         _ScaleFeature = new BallScaleFeature(transform, ScaleAnimSize);
         _RotateFeature = new BallRotationFeature(transform);
         _HitColorFeature = new BallHitColorFeature(HitColor, ColorfulColor, _renderer, this);
+        _VfxController = new BallVfxController(transform, ParticleEffectPoolSize, _ParticleObject);
     }
     private void OnEnable()
     {
@@ -42,6 +47,7 @@ public class BallControler : MonoBehaviour
         _RotateFeature.SubEvents();
         _StretchFeature.SubEvents();
         _HitColorFeature.SubEvents();
+        _VfxController.SubEvents();
         EventBus<EV_BallCollide>.AddListener(PlayCollisionFeatures);
     }
     private void OnDisable()
@@ -52,6 +58,7 @@ public class BallControler : MonoBehaviour
         _RotateFeature.UnSubEvents();
         _StretchFeature.UnSubEvents();
         _HitColorFeature.UnSubEvents();
+        _VfxController.UnSubEvents();
         EventBus<EV_BallCollide>.RemoveListener(PlayCollisionFeatures);
     }
 

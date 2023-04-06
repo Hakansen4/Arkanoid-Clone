@@ -129,6 +129,8 @@ MonoBehaviour:
   ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
   StretchAnimSize: {x: 0.25, y: 0.3, z: 1}
   Speed: 2
+  ParticleEffectPoolSize: 4
+  _ParticleObject: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
 --- !u!114 &5948672776943230797
 MonoBehaviour:
   m_ObjectHideFlags: 0
