@@ -6,16 +6,16 @@ using Ambrosia.EventBus;
 using Events.Others;
 using System;
 
-public class BalSfxController : MonoBehaviour
+public class BalSfxController
 {
-    private void OnEnable()
+    public void SubEvents()
     {
         EventBus<EV_BallHitSound>.AddListener(HitActivity);
         EventBus<EV_BallBlockCollide>.AddListener(BallBlockCollide);
         EventBus<EV_BallPaddleCollide>.AddListener(BallPaddleCollide);
         EventBus<EV_BallWallCollide>.AddListener(BallWallCollide);
     }
-    private void OnDisable()
+    public void UnSubEvents()
     {
         EventBus<EV_BallHitSound>.RemoveListener(HitActivity);
         EventBus<EV_BallBlockCollide>.RemoveListener(BallBlockCollide);

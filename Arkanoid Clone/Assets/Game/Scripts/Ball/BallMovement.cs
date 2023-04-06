@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BallMovement : MonoBehaviour
+public class BallMovement
 {
     Rigidbody2D physic;
     public float Speed;
-    private void Awake()
+    public BallMovement(Rigidbody2D rigidbody, float Speed)
     {
-        physic = GetComponent<Rigidbody2D>();
+        physic = rigidbody;
+        this.Speed = Speed;
     }
-    private void OnEnable()
-    {
-        StartMovement();
-    }
-    private void StartMovement()
+    public void StartMovement()
     {
         float x = Random.Range(0, 2) == 0 ? -1 : 1;
         float y = Random.Range(0, 2) == 0 ? -1 : 1;

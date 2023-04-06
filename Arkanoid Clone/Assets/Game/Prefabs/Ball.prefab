@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 9025964661040359601}
   - component: {fileID: 9025964661040359607}
   - component: {fileID: -4685972114961293597}
-  - component: {fileID: 9025964661040359606}
   - component: {fileID: 5948672776943230797}
   - component: {fileID: 9025964661040359605}
-  - component: {fileID: 129965874165584334}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -123,23 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e158f654ea0cc7a41beb49d753f5c123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _physic: {fileID: 9025964661040359607}
+  _renderer: {fileID: 9025964661040359601}
   _Collision: {fileID: 5948672776943230797}
   HitColor: {fileID: 2100000, guid: baea3a3edd914104ebdac92114979f55, type: 2}
   ColorfulColor: {fileID: 2100000, guid: 95352acee4a830241b4ff65119be747f, type: 2}
   ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
   StretchAnimSize: {x: 0.25, y: 0.3, z: 1}
---- !u!114 &9025964661040359606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025964661040359602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253c200b388a4774da1edb8c8978caab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   Speed: 2
 --- !u!114 &5948672776943230797
 MonoBehaviour:
@@ -153,8 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f597169e6b5274285390263e8879dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _physic: {fileID: 9025964661040359607}
-  _renderer: {fileID: 9025964661040359601}
 --- !u!61 &9025964661040359605
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -181,15 +167,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &129965874165584334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025964661040359602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0922e6d9a71f69341ba957b73331c53a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
