@@ -20,6 +20,10 @@ public class AudioSourceController : MonoBehaviour, IPoolable
         float time = Audio.clip.length;
         StartCoroutine(SoundFinished(time,pool));
     }
+    public void StartTimer(ObjectPool<AudioSourceController> pool,float time)
+    {
+        StartCoroutine(SoundFinished(time, pool));
+    }
     private IEnumerator SoundFinished(float Time,ObjectPool<AudioSourceController> pool)
     {
         yield return new WaitForSeconds(Time);

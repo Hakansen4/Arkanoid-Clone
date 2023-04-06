@@ -82,7 +82,10 @@ public class AudioManager : MonoBehaviour
             if (sounds[i].name == musicName)
             {
                 if (!sounds[i].checkActivity())
+                {
+                    sounds[i]?.source.gameObject.GetComponent<AudioSourceController>().StartTimer(AudioSourcePool, 0.1f);
                     return;
+                }
 
                 sounds[i].SetSource(AudioSourcePool.GetPooledObject().GetAudioSource());
                 sounds[i].Play();

@@ -11,4 +11,5 @@ public static class Strings
     public static string BoxTag = "Box";
     public static string PlayerTag = "Paddle";
     public static string BorderTag = "Border";
+    public static string JuicyMusic = "Juicy_Theme";
 }

@@ -18,6 +18,7 @@ public class FeaturesInspector : MonoBehaviour
     bool BallHitBlock;
     bool BallHitPaddle;
     bool BallHitWall;
+    bool GameMusic;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -110,6 +111,14 @@ public class FeaturesInspector : MonoBehaviour
         {
             BallHitWall = value;
             EventBus<EV_BallHitSound>.Emit(this, new EV_BallHitSound(type));
+        }
+    }
+    public void SetGameMusic(bool value)
+    {
+        if (GameMusic != value)
+        {
+            GameMusic = value;
+            EventBus<EV_MusicSound>.Emit(this, new EV_MusicSound());
         }
     }
 }

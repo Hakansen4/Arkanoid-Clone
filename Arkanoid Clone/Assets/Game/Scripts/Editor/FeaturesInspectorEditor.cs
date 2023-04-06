@@ -18,6 +18,7 @@ public class FeaturesInspectorEditor : Editor
     bool BallHitBlock;
     bool BallHitWall;
     bool BallHitPaddle;
+    bool GameMusic;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -77,5 +78,8 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         BallHitPaddle = GUILayout.Toggle(BallHitPaddle, Strings.BallHitPaddleSound);
         myScript.SetBallHitPaddle(BallHitPaddle, Strings.BallHitPaddleSound);
+        GUILayout.Space(5);
+        GameMusic = GUILayout.Toggle(GameMusic, "Game Music");
+        myScript.SetGameMusic(GameMusic);
     }
 }

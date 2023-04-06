@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerController _Player;
     [SerializeField] GameObject _Ball;
-
     private void OnEnable()
     {
         EventBus<EV_StartGame>.AddListener(StartGame);
