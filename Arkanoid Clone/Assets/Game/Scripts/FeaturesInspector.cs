@@ -15,6 +15,9 @@ public class FeaturesInspector : MonoBehaviour
     bool BallHitEffect;
     bool ShakeBoxEffect;
     bool ShakeBorderEffect;
+    bool BallHitBlock;
+    bool BallHitPaddle;
+    bool BallHitWall;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -83,6 +86,30 @@ public class FeaturesInspector : MonoBehaviour
         {
             ShakeBorderEffect = value;
             EventBus<EV_ShakeBorder>.Emit(this, new EV_ShakeBorder());
+        }
+    }
+    public void SetBallHitBlock(bool value,string type)
+    {
+        if (BallHitBlock != value)
+        {
+            BallHitBlock = value;
+            EventBus<EV_BallHitSound>.Emit(this, new EV_BallHitSound(type));
+        }
+    }
+    public void SetBallHitPaddle(bool value, string type)
+    {
+        if (BallHitPaddle != value)
+        {
+            BallHitPaddle = value;
+            EventBus<EV_BallHitSound>.Emit(this, new EV_BallHitSound(type));
+        }
+    }
+    public void SetBallHitWall(bool value, string type)
+    {
+        if (BallHitWall != value)
+        {
+            BallHitWall = value;
+            EventBus<EV_BallHitSound>.Emit(this, new EV_BallHitSound(type));
         }
     }
 }

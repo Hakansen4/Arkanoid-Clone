@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 78106927}
   m_Layer: 0
   m_Name: TopBorder
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 206555244}
   m_Layer: 0
   m_Name: RightBorder
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 429882825}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 510410905}
   m_Layer: 0
   m_Name: BottomBorder
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,37 +683,6 @@ MonoBehaviour:
   ShakeDuration: 0.2
   StrengthShake: 0.2
   Color: {fileID: 2100000, guid: 645ec66efbd7e0a4fbd8c2619a5556e4, type: 2}
---- !u!1 &586862636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 586862637}
-  m_Layer: 0
-  m_Name: Todoiste Bak Eksikler Var UNUTMA
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &586862637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586862636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0603485, y: 5.382297, z: -10.053101}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092556331
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +859,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1215955328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215955330}
+  - component: {fileID: 1215955329}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1215955329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215955328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03941a1b02ed6eb4ca72e7d054c9f759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BallPaddle
+    clip: {fileID: 8300000, guid: 2de7fa2b8c5792d49aa42e9506c5d819, type: 3}
+    source: {fileID: 0}
+  - name: BallWall
+    clip: {fileID: 8300000, guid: 8b4b34672c0b3ad459e1b9bb45c98f5c, type: 3}
+    source: {fileID: 0}
+  - name: BallBlock
+    clip: {fileID: 8300000, guid: d13dea95abab57f43abff7915ef95d1f, type: 3}
+    source: {fileID: 0}
+  - name: Music
+    clip: {fileID: 8300000, guid: 437b387bb5f23954f8157da570ed3b42, type: 3}
+    source: {fileID: 0}
+  AmountOfSourcePool: 4
+  AudioSourcePrefab: {fileID: 7938128873966074332, guid: 41d928284cea0cc4d987b6e674f5a1da, type: 3}
+--- !u!4 &1215955330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215955328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.0603485, y: 5.382297, z: -10.053101}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342443404
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +967,7 @@ GameObject:
   - component: {fileID: 1607456992}
   m_Layer: 0
   m_Name: LeftBorder
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
