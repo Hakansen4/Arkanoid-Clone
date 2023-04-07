@@ -20,6 +20,10 @@ public class FeaturesInspector : MonoBehaviour
     bool BallHitWall;
     bool GameMusic;
     bool BallVfx;
+    bool BoxDeadScale;
+    bool BoxDeadFall;
+    bool BoxDeadPush;
+    bool BoxDeadRotate;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -128,6 +132,38 @@ public class FeaturesInspector : MonoBehaviour
         {
             BallVfx = value;
             EventBus<EV_BallHitVfx>.Emit(this, new EV_BallHitVfx());
+        }
+    }
+    public void SetBoxScaleAnim(bool value)
+    {
+        if (BoxDeadScale != value)
+        {
+            BoxDeadScale = value;
+            EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.Scale));
+        }
+    }
+    public void SetBoxFallAnim(bool value)
+    {
+        if (BoxDeadFall != value)
+        {
+            BoxDeadFall = value;
+            EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.Gravity));
+        }
+    }
+    public void SetBoxPushAnim(bool value)
+    {
+        if (BoxDeadPush != value)
+        {
+            BoxDeadPush = value;
+            EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.Push));
+        }
+    }
+    public void SetBoxRotateAnim(bool value)
+    {
+        if (BoxDeadRotate != value)
+        {
+            BoxDeadRotate = value;
+            EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.Rotate));
         }
     }
 }

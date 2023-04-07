@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9025964661040359602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,9 +100,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: ea798af765390bb49af732dc2ede1354, type: 2}
   m_Interpolate: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   ColorfulColor: {fileID: 2100000, guid: 95352acee4a830241b4ff65119be747f, type: 2}
   ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
   StretchAnimSize: {x: 0.25, y: 0.3, z: 1}
-  Speed: 2
+  Speed: 3
   ParticleEffectPoolSize: 4
   _ParticleObject: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
 --- !u!114 &5948672776943230797

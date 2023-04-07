@@ -6,21 +6,30 @@ public class BoxesController : MonoBehaviour
     public static BoxesController instance;
 
     private List<BoxController> _BoxList;
-    [SerializeField] private GameObject _BoxPrefab;
-    public float distanceBtwBoxes_X;
-    public float distanceBtwBoxes_Y;
-    public float StarterXPos;
-    public float StarterYPos;
-    public int Size_X;
-    public int Size_Y;
-    public int BoxTweenDistance;
-    public int BoxTweenDuration;
-    public int MaxBoxTweenDuration;
-    public int MinBoxTweenDuration;
-    public float BoxShakeDuration;
-    public float BoxShakeStrength;
     private ObjectPool<BoxController> BoxPool;
+    #region Data
+    [Header("Box Prefab")]
+    [SerializeField] private GameObject _BoxPrefab;
+    [Header("Box Placement Information")]
+    [SerializeField] private float distanceBtwBoxes_X;
+    [SerializeField] private float distanceBtwBoxes_Y;
+    [SerializeField] private float StarterXPos;
+    [SerializeField] private float StarterYPos;
+    [SerializeField] private int Size_X;
+    [SerializeField] private int Size_Y;
+    [Header("Tween Feature")]
+    [SerializeField] private int BoxTweenDistance;
+    [SerializeField] private int BoxTweenDuration;
+    [SerializeField] private int MaxBoxTweenDuration;
+    [SerializeField] private int MinBoxTweenDuration;
+    [Header("Shake Feature")]
+    [SerializeField] private float BoxShakeDuration;
+    [SerializeField] private float BoxShakeStrength;
+    [Header("Box Destroy Animations")]
+    [SerializeField] private float BoxDestroyAnimTime;
+    [Header("Color Feature")]
     [SerializeField] private Material _Color;
+    #endregion
     private void Awake()
     {
         if (instance == null)
@@ -47,7 +56,7 @@ public class BoxesController : MonoBehaviour
     {
         var box = BoxPool.GetPooledObject();
         box.gameObject.transform.position = position;
-        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength, _Color);
+        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength, _Color, BoxDestroyAnimTime);
         _BoxList.Add(box);
     }
     public void BoxDeactivated(BoxController box)

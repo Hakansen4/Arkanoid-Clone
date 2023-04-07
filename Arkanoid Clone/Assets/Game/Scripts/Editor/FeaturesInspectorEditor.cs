@@ -20,6 +20,10 @@ public class FeaturesInspectorEditor : Editor
     bool BallHitPaddle;
     bool GameMusic;
     bool BallVfx;
+    bool BoxDeadScale;
+    bool BoxDeadFall;
+    bool BoxDeadPush;
+    bool BoxDeadRotate;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -88,5 +92,17 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         BallVfx = GUILayout.Toggle(BallVfx, "Ball Hit Visual Effect");
         myScript.SetBallVfx(BallVfx);
+        GUILayout.Space(5);
+        BoxDeadScale = GUILayout.Toggle(BoxDeadScale, "Box Scale");
+        myScript.SetBoxScaleAnim(BoxDeadScale);
+        GUILayout.Space(5);
+        BoxDeadFall = GUILayout.Toggle(BoxDeadFall, "Box Gravity");
+        myScript.SetBoxFallAnim(BoxDeadFall);
+        GUILayout.Space(5);
+        BoxDeadPush = GUILayout.Toggle(BoxDeadPush, "Box Push");
+        myScript.SetBoxPushAnim(BoxDeadPush);
+        GUILayout.Space(5);
+        BoxDeadRotate = GUILayout.Toggle(BoxDeadRotate, "Box Rotate");
+        myScript.SetBoxRotateAnim(BoxDeadRotate);
     }
 }

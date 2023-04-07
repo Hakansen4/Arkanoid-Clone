@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 78106923}
   - component: {fileID: 78106925}
   - component: {fileID: 78106927}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopBorder
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 206555241}
   - component: {fileID: 206555242}
   - component: {fileID: 206555244}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightBorder
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 429882822}
   - component: {fileID: 429882824}
   - component: {fileID: 429882825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Paddle
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 510410902}
   - component: {fileID: 510410903}
   - component: {fileID: 510410905}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomBorder
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -843,6 +843,7 @@ MonoBehaviour:
   MinBoxTweenDuration: 1
   BoxShakeDuration: 0.06
   BoxShakeStrength: 0.06
+  BoxDestroyAnimTime: 2
   _Color: {fileID: 2100000, guid: 645ec66efbd7e0a4fbd8c2619a5556e4, type: 2}
 --- !u!4 &1153739886
 Transform:
@@ -1009,7 +1010,7 @@ GameObject:
   - component: {fileID: 1607456989}
   - component: {fileID: 1607456990}
   - component: {fileID: 1607456992}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftBorder
   m_TagString: Border
   m_Icon: {fileID: 0}
