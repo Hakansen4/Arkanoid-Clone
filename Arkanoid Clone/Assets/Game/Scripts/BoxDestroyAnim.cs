@@ -13,17 +13,22 @@ public class BoxDestroyAnim
     private Transform transform;
     private Rigidbody2D Physic;
     private BoxCollider2D BoxCollider;
+    private SpriteRenderer _Renderer;
+    private Material _Color;
 
     private bool ScaleActive;
     private bool GravityActive;
     private bool PushActive;
     private bool RotateActive;
-    public BoxDestroyAnim(Transform transform, float Duration,Rigidbody2D Rigidbody,BoxCollider2D Collider)
+    private bool ChangeColorActive;
+    public BoxDestroyAnim(Transform transform, float Duration,Rigidbody2D Rigidbody,BoxCollider2D Collider,SpriteRenderer Renderer, Material DestroyColor)
     {
         this.Duration = Duration;
         this.transform = transform;
         BoxCollider = Collider;
         Physic = Rigidbody;
+        _Renderer = Renderer;
+        _Color = DestroyColor;
     }
     public void SubEvents()
     {
@@ -50,6 +55,9 @@ public class BoxDestroyAnim
             case BoxDestroyEffect.Rotate:
                 RotateActive = !RotateActive;
                 break;
+            case BoxDestroyEffect.ChangeColor:
+                ChangeColorActive = !ChangeColorActive;
+                break;
             default:
                 break;
         }
@@ -57,9 +65,10 @@ public class BoxDestroyAnim
 
     public bool Animate()
     {
-        if (!ScaleActive && !RotateActive && !PushActive && !GravityActive)
+        if (!ScaleActive)
             return false;
 
+        ChangeColor();
         RotateBox();
         PushUp();
         SetGravity();
@@ -92,8 +101,13 @@ public class BoxDestroyAnim
         if (RotateActive)
             transform.DORotate(new Vector3(0, 0, -180), Duration);
     }
+    private void ChangeColor()
+    {
+        if (ChangeColorActive)
+            _Renderer.material = _Color;
+    }
 }
 public enum BoxDestroyEffect
 {
-    Scale,Gravity,Push,Rotate
+    Scale,Gravity,Push,Rotate,ChangeColor
 };

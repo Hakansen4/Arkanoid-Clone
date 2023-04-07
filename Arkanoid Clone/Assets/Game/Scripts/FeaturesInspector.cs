@@ -24,6 +24,7 @@ public class FeaturesInspector : MonoBehaviour
     bool BoxDeadFall;
     bool BoxDeadPush;
     bool BoxDeadRotate;
+    bool BoxDeadMaterial;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -164,6 +165,14 @@ public class FeaturesInspector : MonoBehaviour
         {
             BoxDeadRotate = value;
             EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.Rotate));
+        }
+    }
+    public void SetBoxDestroyMaterial(bool value)
+    {
+        if (BoxDeadMaterial != value)
+        {
+            BoxDeadMaterial = value;
+            EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.ChangeColor));
         }
     }
 }

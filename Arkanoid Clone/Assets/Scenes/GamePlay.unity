@@ -844,6 +844,7 @@ MonoBehaviour:
   BoxShakeDuration: 0.06
   BoxShakeStrength: 0.06
   BoxDestroyAnimTime: 2
+  DestroyMaterial: {fileID: 2100000, guid: 65f365f72a969e74fa1506c5ba65d165, type: 2}
   _Color: {fileID: 2100000, guid: 645ec66efbd7e0a4fbd8c2619a5556e4, type: 2}
 --- !u!4 &1153739886
 Transform:

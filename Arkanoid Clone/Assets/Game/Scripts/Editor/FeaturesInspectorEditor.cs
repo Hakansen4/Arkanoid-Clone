@@ -24,6 +24,7 @@ public class FeaturesInspectorEditor : Editor
     bool BoxDeadFall;
     bool BoxDeadPush;
     bool BoxDeadRotate;
+    bool BoxDeadMaterial;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -104,5 +105,8 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         BoxDeadRotate = GUILayout.Toggle(BoxDeadRotate, "Box Rotate");
         myScript.SetBoxRotateAnim(BoxDeadRotate);
+        GUILayout.Space(5);
+        BoxDeadMaterial = GUILayout.Toggle(BoxDeadMaterial, "Box Darken");
+        myScript.SetBoxDestroyMaterial(BoxDeadMaterial);
     }
 }

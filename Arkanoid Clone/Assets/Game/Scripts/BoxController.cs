@@ -13,12 +13,12 @@ public class BoxController : MonoBehaviour,IPoolable
     private ColorFeature _ColorFeature;
     private BoxDestroyAnim _DestroyFeature;
     private float DestroyAnimTime;
-    public void Init(int tweenDistance,int TweenDuration,int MinTweenDuration,int MaxTweenDuration,float ShakeDuration,float ShakeStrength,Material Color,float DestroyAnimTime)
+    public void Init(int tweenDistance,int TweenDuration,int MinTweenDuration,int MaxTweenDuration,float ShakeDuration,float ShakeStrength,Material Color,float DestroyAnimTime,Material DestroyColor)
     {
         _ShakeFeature = new ShakeFeature<EV_ShakeBox>(transform, ShakeDuration, ShakeStrength);
         _TweenFeature = new TweenFeatures(tweenDistance, transform,TweenDuration,MaxTweenDuration,MinTweenDuration);
         _ColorFeature = new ColorFeature(GetComponent<SpriteRenderer>(), Color);
-        _DestroyFeature = new BoxDestroyAnim(transform, DestroyAnimTime, GetComponent<Rigidbody2D>(),GetComponent<BoxCollider2D>());
+        _DestroyFeature = new BoxDestroyAnim(transform, DestroyAnimTime, GetComponent<Rigidbody2D>(), GetComponent<BoxCollider2D>(), GetComponent<SpriteRenderer>(), DestroyColor);
         _DestroyFeature.SubEvents();
         _ColorFeature.SubEvents();
         _TweenFeature.SubEvents();

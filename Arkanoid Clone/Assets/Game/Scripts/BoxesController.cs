@@ -27,6 +27,7 @@ public class BoxesController : MonoBehaviour
     [SerializeField] private float BoxShakeStrength;
     [Header("Box Destroy Animations")]
     [SerializeField] private float BoxDestroyAnimTime;
+    [SerializeField] private Material DestroyMaterial;
     [Header("Color Feature")]
     [SerializeField] private Material _Color;
     #endregion
@@ -56,7 +57,7 @@ public class BoxesController : MonoBehaviour
     {
         var box = BoxPool.GetPooledObject();
         box.gameObject.transform.position = position;
-        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength, _Color, BoxDestroyAnimTime);
+        box.Init(BoxTweenDistance, BoxTweenDuration, MinBoxTweenDuration, MaxBoxTweenDuration, BoxShakeDuration, BoxShakeStrength, _Color, BoxDestroyAnimTime,DestroyMaterial);
         _BoxList.Add(box);
     }
     public void BoxDeactivated(BoxController box)
