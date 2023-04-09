@@ -26,6 +26,9 @@ public class FeaturesInspector : MonoBehaviour
     bool BoxDeadRotate;
     bool BoxDeadMaterial;
     bool PlayerConfetti;
+    bool PlayerEyeActive;
+    float EyeScaleValue;
+    float EyePosValue;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -182,6 +185,23 @@ public class FeaturesInspector : MonoBehaviour
         {
             PlayerConfetti = value;
             EventBus<EV_PlayerConfetti>.Emit(this, new EV_PlayerConfetti());
+        }
+    }
+    public void SetPlayerEyeActive(bool value)
+    {
+        if (PlayerEyeActive != value)
+        {
+            PlayerEyeActive = value;
+            EventBus<EV_PlayerEyeActive>.Emit(this, new EV_PlayerEyeActive());
+        }
+    }
+    public void SetEyeValues(float Scalevalue, float PosValue)
+    {
+        if (EyePosValue != PosValue    || EyeScaleValue != Scalevalue)
+        {
+            EyePosValue = PosValue;
+            EyeScaleValue = Scalevalue;
+            EventBus<EV_EyeValues>.Emit(this, new EV_EyeValues(EyeScaleValue, EyePosValue));
         }
     }
 }

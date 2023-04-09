@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Material Color;
     [Header("Visual Effects")]
     [SerializeField] private GameObject Confetti;
+    [SerializeField] private Transform LeftEye;
+    [SerializeField] private Transform RightEye;
     #endregion
 
     private TweenFeatures _TweenFeature;
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
         _ElasticFeature = new PlayerElasticFeature(transform, MinScaleY, MaxScaleY, ElasticSpeed);
         _TweenFeature = new TweenFeatures(TweenDistance, transform, StandartTweenDuration,MaxTweenDuration,MinTweenDuration);
         _ColorFeature = new ColorFeature(GetComponent<SpriteRenderer>(), Color);
-        _VfxController = new PlayerVfxController(transform, Confetti);
+        _VfxController = new PlayerVfxController(transform, Confetti, LeftEye, RightEye);
     }
 
     private void Update()

@@ -26,6 +26,9 @@ public class FeaturesInspectorEditor : Editor
     bool BoxDeadRotate;
     bool BoxDeadMaterial;
     bool PlayerConfetti;
+    bool PlayerEyeActive;
+    float EyeScaleValue;
+    float EyePosValue;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -112,5 +115,13 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         PlayerConfetti = GUILayout.Toggle(PlayerConfetti, "Player Confetti");
         myScript.SetPlayerConfetti(PlayerConfetti);
+        GUILayout.Space(5);
+        PlayerEyeActive = GUILayout.Toggle(PlayerEyeActive, "Player Eye Acitve");
+        myScript.SetPlayerEyeActive(PlayerEyeActive);
+        GUILayout.Space(5);
+        EyeScaleValue = EditorGUILayout.Slider(EyeScaleValue, 0, 0.3f);
+        GUILayout.Space(5);
+        EyePosValue = EditorGUILayout.Slider(EyePosValue, -0.25f, 0.25f);
+        myScript.SetEyeValues(EyeScaleValue, EyePosValue);
     }
 }
