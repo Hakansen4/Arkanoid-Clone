@@ -29,6 +29,7 @@ public class FeaturesInspector : MonoBehaviour
     bool PlayerEyeActive;
     float EyeScaleValue;
     float EyePosValue;
+    bool PaddleMouth;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -202,6 +203,14 @@ public class FeaturesInspector : MonoBehaviour
             EyePosValue = PosValue;
             EyeScaleValue = Scalevalue;
             EventBus<EV_EyeValues>.Emit(this, new EV_EyeValues(EyeScaleValue, EyePosValue));
+        }
+    }
+    public void SetPaddleMouth(bool value)
+    {
+        if (PaddleMouth != value)
+        {
+            PaddleMouth = value;
+            EventBus<EV_ActivateMouth>.Emit(this, new EV_ActivateMouth());
         }
     }
 }

@@ -29,6 +29,7 @@ public class FeaturesInspectorEditor : Editor
     bool PlayerEyeActive;
     float EyeScaleValue;
     float EyePosValue;
+    bool PaddleMouth;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -123,5 +124,7 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         EyePosValue = EditorGUILayout.Slider(EyePosValue, -0.25f, 0.25f);
         myScript.SetEyeValues(EyeScaleValue, EyePosValue);
+        PaddleMouth = GUILayout.Toggle(PaddleMouth, "Paddle Mouth");
+        myScript.SetPaddleMouth(PaddleMouth);
     }
 }

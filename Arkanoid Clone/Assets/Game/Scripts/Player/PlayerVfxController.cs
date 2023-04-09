@@ -13,8 +13,10 @@ public class PlayerVfxController
     private Transform LeftEye;
     private Transform RightEye;
     private bool confettiIsActive;
-    public PlayerVfxController(Transform transform, GameObject Confetti, Transform LeftEye,Transform RightEye)
+    private GameObject Mouth;
+    public PlayerVfxController(Transform transform, GameObject Confetti, Transform LeftEye,Transform RightEye, GameObject Mouth)
     {
+        this.Mouth = Mouth;
         this.RightEye = RightEye;
         this.LeftEye = LeftEye;
         this.transform = transform;
@@ -27,6 +29,7 @@ public class PlayerVfxController
         EventBus<EV_BallPaddleCollide>.AddListener(StartConfetti);
         EventBus<EV_PlayerEyeActive>.AddListener(EyeActivity);
         EventBus<EV_EyeValues>.AddListener(EyeValues);
+        EventBus<EV_ActivateMouth>.AddListener(ActivateMouth);
     }
     public void UnSubEvents()
     {
@@ -34,6 +37,15 @@ public class PlayerVfxController
         EventBus<EV_BallPaddleCollide>.RemoveListener(StartConfetti);
         EventBus<EV_PlayerEyeActive>.AddListener(EyeActivity);
         EventBus<EV_EyeValues>.RemoveListener(EyeValues);
+        EventBus<EV_ActivateMouth>.RemoveListener(ActivateMouth);
+    }
+
+    private void ActivateMouth(object sender, EV_ActivateMouth @event)
+    {
+        if (Mouth.active)
+            Mouth.SetActive(false);
+        else
+            Mouth.SetActive(true);
     }
 
     private void EyeValues(object sender, EV_EyeValues @event)
