@@ -25,6 +25,7 @@ public class FeaturesInspectorEditor : Editor
     bool BoxDeadPush;
     bool BoxDeadRotate;
     bool BoxDeadMaterial;
+    bool PlayerConfetti;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -108,5 +109,8 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         BoxDeadMaterial = GUILayout.Toggle(BoxDeadMaterial, "Box Darken");
         myScript.SetBoxDestroyMaterial(BoxDeadMaterial);
+        GUILayout.Space(5);
+        PlayerConfetti = GUILayout.Toggle(PlayerConfetti, "Player Confetti");
+        myScript.SetPlayerConfetti(PlayerConfetti);
     }
 }

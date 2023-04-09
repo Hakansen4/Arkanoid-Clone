@@ -19,12 +19,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float MinScaleY;
     [Header("Color Feature")]
     [SerializeField] private Material Color;
+    [Header("Visual Effects")]
+    [SerializeField] private GameObject Confetti;
     #endregion
 
     private TweenFeatures _TweenFeature;
     private PlayerElasticFeature _ElasticFeature;
     private ColorFeature _ColorFeature;
     private PlayerMovement Movement;
+    private PlayerVfxController _VfxController;
     
     private void Awake()
     {
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
         _ElasticFeature = new PlayerElasticFeature(transform, MinScaleY, MaxScaleY, ElasticSpeed);
         _TweenFeature = new TweenFeatures(TweenDistance, transform, StandartTweenDuration,MaxTweenDuration,MinTweenDuration);
         _ColorFeature = new ColorFeature(GetComponent<SpriteRenderer>(), Color);
+        _VfxController = new PlayerVfxController(transform, Confetti);
     }
 
     private void Update()
@@ -44,12 +48,14 @@ public class PlayerController : MonoBehaviour
         _TweenFeature.SubEvents();
         _ElasticFeature.SubEvents();
         _ColorFeature.SubEvents();
+        _VfxController.SubEvents();
     }
     private void OnDisable()
     {
         _TweenFeature.UnSubEvents();
         _ElasticFeature.UnSubEvents();
         _ColorFeature.UnSubEvents();
+        _VfxController.UnSubEvents();
     }
 
     public void StartGame()

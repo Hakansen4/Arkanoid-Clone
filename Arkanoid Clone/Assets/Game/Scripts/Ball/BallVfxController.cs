@@ -8,13 +8,13 @@ using System;
 
 public class BallVfxController
 {
-    private ObjectPool<SparkController> _ParticlePool;
+    private ObjectPool<ParticleController> _ParticlePool;
     private Transform transform;
     bool isActive;
     public BallVfxController(Transform transform,int ParticlePoolSize,GameObject particleObject)
     {
         this.transform = transform;
-        _ParticlePool = new ObjectPool<SparkController>(ParticlePoolSize, particleObject);
+        _ParticlePool = new ObjectPool<ParticleController>(ParticlePoolSize, particleObject);
     }
     public void SubEvents()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class SparkController : MonoBehaviour, IPoolable
+public class ParticleController : MonoBehaviour, IPoolable
 {
     private ParticleSystem _particle;
     private void Awake()
@@ -11,7 +11,7 @@ public class SparkController : MonoBehaviour, IPoolable
         _particle = GetComponent<ParticleSystem>();
         _particle.Stop();
     }
-    public void StartDeactiveTimer(ObjectPool<SparkController> pool)
+    public void StartDeactiveTimer(ObjectPool<ParticleController> pool)
     {
         StartCoroutine(ParticleFinished(_particle.duration, pool));
     }
@@ -26,7 +26,7 @@ public class SparkController : MonoBehaviour, IPoolable
         _particle.Stop();
         gameObject.SetActive(false);
     }
-    private IEnumerator ParticleFinished(float value,ObjectPool<SparkController> pool)
+    private IEnumerator ParticleFinished(float value,ObjectPool<ParticleController> pool)
     {
         yield return new WaitForSeconds(value);
         pool.ObjectDeactivated(this);

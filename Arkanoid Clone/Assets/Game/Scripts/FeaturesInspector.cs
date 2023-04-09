@@ -25,6 +25,7 @@ public class FeaturesInspector : MonoBehaviour
     bool BoxDeadPush;
     bool BoxDeadRotate;
     bool BoxDeadMaterial;
+    bool PlayerConfetti;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -173,6 +174,14 @@ public class FeaturesInspector : MonoBehaviour
         {
             BoxDeadMaterial = value;
             EventBus<EV_BoxDestroyEffect>.Emit(this, new EV_BoxDestroyEffect(BoxDestroyEffect.ChangeColor));
+        }
+    }
+    public void SetPlayerConfetti(bool value)
+    {
+        if(PlayerConfetti != value)
+        {
+            PlayerConfetti = value;
+            EventBus<EV_PlayerConfetti>.Emit(this, new EV_PlayerConfetti());
         }
     }
 }
