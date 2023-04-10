@@ -31,6 +31,7 @@ public class FeaturesInspector : MonoBehaviour
     float EyePosValue;
     bool PaddleMouth;
     bool ScreenShake;
+    bool BallTrail;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -220,6 +221,14 @@ public class FeaturesInspector : MonoBehaviour
         {
             ScreenShake = value;
             EventBus<EV_ScreenShake>.Emit(this, new EV_ScreenShake());
+        }
+    }
+    public void SetBallTrail(bool value)
+    {
+        if (BallTrail != value)
+        {
+            BallTrail = value;
+            EventBus<EV_BallTrail>.Emit(this, new EV_BallTrail());
         }
     }
 }

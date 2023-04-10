@@ -19,6 +19,7 @@ public class BallControler : MonoBehaviour
     [SerializeField] private float Speed;
     [SerializeField] private int ParticleEffectPoolSize;
     [SerializeField] private GameObject _ParticleObject;
+    [SerializeField] private GameObject _TrailObject;
     private BallMovement _Movement;
     private BalSfxController _SfxController;
     private ColorFeature _ColorFeature;
@@ -27,6 +28,7 @@ public class BallControler : MonoBehaviour
     private BallStretchFeature _StretchFeature;
     private BallHitColorFeature _HitColorFeature;
     private BallVfxController _VfxController;
+    private BallTrailFeature _TrailFeature;
     private void Awake()
     {
         _SfxController = new BalSfxController();
@@ -37,6 +39,7 @@ public class BallControler : MonoBehaviour
         _RotateFeature = new BallRotationFeature(transform);
         _HitColorFeature = new BallHitColorFeature(HitColor, ColorfulColor, _renderer, this);
         _VfxController = new BallVfxController(transform, ParticleEffectPoolSize, _ParticleObject);
+        _TrailFeature = new BallTrailFeature(_TrailObject, ColorfulColor);
     }
     private void OnEnable()
     {
@@ -48,6 +51,7 @@ public class BallControler : MonoBehaviour
         _StretchFeature.SubEvents();
         _HitColorFeature.SubEvents();
         _VfxController.SubEvents();
+        _TrailFeature.SubEvents();
         EventBus<EV_BallCollide>.AddListener(PlayCollisionFeatures);
     }
     private void OnDisable()
@@ -59,6 +63,7 @@ public class BallControler : MonoBehaviour
         _StretchFeature.UnSubEvents();
         _HitColorFeature.UnSubEvents();
         _VfxController.UnSubEvents();
+        _TrailFeature.UnSubEvents();
         EventBus<EV_BallCollide>.RemoveListener(PlayCollisionFeatures);
     }
 
