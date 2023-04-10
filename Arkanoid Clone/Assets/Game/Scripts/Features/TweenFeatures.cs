@@ -41,7 +41,11 @@ public class TweenFeatures : ITweenable
         Randomizer(@event.Randomizer);
         Tween((TweenType)@event.TweenValue);
     }
-
+    public void ManuelTween(TweenType type,bool RandomizerBool)
+    {
+        Randomizer(RandomizerBool);
+        Tween(type);
+    }
     private void Randomizer(bool value)
     {
         if(!value)

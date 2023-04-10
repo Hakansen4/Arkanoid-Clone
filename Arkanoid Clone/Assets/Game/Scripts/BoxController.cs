@@ -8,7 +8,7 @@ using System;
 
 public class BoxController : MonoBehaviour,IPoolable
 {
-    private TweenFeatures _TweenFeature;
+    public TweenFeatures _TweenFeature;
     private ShakeFeature<EV_ShakeBox> _ShakeFeature;
     private ColorFeature _ColorFeature;
     private BoxDestroyAnim _DestroyFeature;
