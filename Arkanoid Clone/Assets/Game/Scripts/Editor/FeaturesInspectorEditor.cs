@@ -30,6 +30,7 @@ public class FeaturesInspectorEditor : Editor
     float EyeScaleValue;
     float EyePosValue;
     bool PaddleMouth;
+    bool ScreenShake;
     public override void OnInspectorGUI()
     {
         FeaturesInspector myScript = (FeaturesInspector)target;
@@ -116,6 +117,12 @@ public class FeaturesInspectorEditor : Editor
         GUILayout.Space(5);
         PlayerConfetti = GUILayout.Toggle(PlayerConfetti, "Player Confetti");
         myScript.SetPlayerConfetti(PlayerConfetti);
+        GUILayout.Space(5);
+        ScreenShake = GUILayout.Toggle(ScreenShake, "Screen Shake");
+        myScript.SetScreenShake(ScreenShake);
+        GUILayout.Space(5);
+        GUILayout.Space(5);
+        GUILayout.Space(5);
         GUILayout.Space(5);
         PlayerEyeActive = GUILayout.Toggle(PlayerEyeActive, "Player Eye Acitve");
         myScript.SetPlayerEyeActive(PlayerEyeActive);

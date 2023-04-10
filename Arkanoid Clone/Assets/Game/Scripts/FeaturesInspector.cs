@@ -30,6 +30,7 @@ public class FeaturesInspector : MonoBehaviour
     float EyeScaleValue;
     float EyePosValue;
     bool PaddleMouth;
+    bool ScreenShake;
     public void StartGame()
     {
         EventBus<EV_StartGame>.Emit(this, new EV_StartGame());
@@ -211,6 +212,14 @@ public class FeaturesInspector : MonoBehaviour
         {
             PaddleMouth = value;
             EventBus<EV_ActivateMouth>.Emit(this, new EV_ActivateMouth());
+        }
+    }
+    public void SetScreenShake(bool value)
+    {
+        if (ScreenShake != value)
+        {
+            ScreenShake = value;
+            EventBus<EV_ScreenShake>.Emit(this, new EV_ScreenShake());
         }
     }
 }
