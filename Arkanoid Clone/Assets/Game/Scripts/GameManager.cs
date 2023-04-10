@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerController _Player;
     [SerializeField] GameObject _Ball;
+    private ObjectPool<BallControler> BallPool;
+    private BallControler activeBall;
+    private void Awake()
+    {
+        BallPool = new ObjectPool<BallControler>(4, _Ball);
+    }
     private void OnEnable()
     {
         EventBus<EV_StartGame>.AddListener(StartGame);
@@ -21,6 +27,6 @@ public class GameManager : MonoBehaviour
     private void StartGame(object sender, EV_StartGame @event)
     {
         _Player.StartGame();
-        Instantiate(_Ball);
+        activeBall = BallPool.GetPooledObject();
     }
 }

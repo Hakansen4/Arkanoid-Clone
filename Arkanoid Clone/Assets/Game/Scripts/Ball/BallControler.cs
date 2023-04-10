@@ -5,7 +5,7 @@ using Ambrosia.EventBus;
 using Events.Others;
 using System;
 
-public class BallControler : MonoBehaviour
+public class BallControler : MonoBehaviour, IPoolable
 {
     [Header("Components")]
     [SerializeField] private Rigidbody2D _physic;
@@ -43,7 +43,6 @@ public class BallControler : MonoBehaviour
     }
     private void OnEnable()
     {
-        _Movement.StartMovement();
         _ColorFeature.SubEvents();
         _SfxController.SubEvents();
         _ScaleFeature.SubEvents();
@@ -73,5 +72,16 @@ public class BallControler : MonoBehaviour
         _StretchFeature.AnimateStretch();
         _ScaleFeature.ScaleEffect();
         _HitColorFeature.ColorEffect();
+    }
+
+    public void Activate()
+    {
+        gameObject.SetActive(true);
+        _Movement.StartMovement();
+    }
+
+    public void DeActivate()
+    {
+        gameObject.SetActive(false);
     }
 }
