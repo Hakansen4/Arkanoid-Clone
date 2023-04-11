@@ -7,9 +7,11 @@ using System;
 
 public class EyeTrack : MonoBehaviour
 {
+    Transform myTransform;
     Transform Ball;
     private void OnEnable()
     {
+        myTransform = GetComponent<Transform>();
         Ball = GameObject.FindGameObjectWithTag("Ball")?.transform;
     }
 
@@ -26,6 +28,6 @@ public class EyeTrack : MonoBehaviour
             Ball.position.x - transform.position.x,
             Ball.position.y - transform.position.y
             );
-        transform.up = direction;
+        myTransform.up = direction;
     }
 }
