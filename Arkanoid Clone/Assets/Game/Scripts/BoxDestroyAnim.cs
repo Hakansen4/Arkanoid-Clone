@@ -106,6 +106,14 @@ public class BoxDestroyAnim
         if (ChangeColorActive)
             _Renderer.material = _Color;
     }
+    public void RestoreBoxValues()
+    {
+        transform.DOComplete();
+        BoxCollider.enabled = true;
+        Physic.gravityScale = 0;
+        transform.localScale = new Vector3(1, 0.5f, 1);
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
 }
 public enum BoxDestroyEffect
 {

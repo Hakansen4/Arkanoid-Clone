@@ -48,9 +48,9 @@ public class BoxController : MonoBehaviour,IPoolable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        BoxesController.instance.BoxDeactivated(this);
         if (!_DestroyFeature.Animate())
         {
-            BoxesController.instance.BoxDeactivated(this);
             DeActivate();
         }
         else
@@ -59,7 +59,7 @@ public class BoxController : MonoBehaviour,IPoolable
     private IEnumerator DestroyAfterAnim()
     {
         yield return new WaitForSeconds(DestroyAnimTime);
-        BoxesController.instance.BoxDeactivated(this);
+        _DestroyFeature.RestoreBoxValues();
         DeActivate();
     }
 }

@@ -25,7 +25,7 @@ public class MouthAnim : MonoBehaviour
     }
     private void CheckSad()
     {
-        if(Ball.position.y < 2)
+        if(Ball?.position.y < 2)
         {
             if (!isSmiling)
                 transform.localScale = new Vector3(0.2f, 0.01f, 1);
