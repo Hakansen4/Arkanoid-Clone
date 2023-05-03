@@ -39,21 +39,14 @@ public static class ManuelCollision
         if(((xBound_1 <= xBoundRectangle_1 && xBound_1 >= xBoundRectangle_2) || (xBound_2 >= xBoundRectangle_2 && xBound_2 <= xBoundRectangle_1))
                 && ((yBound_1 <= yBoundRectangle_1 && yBound_1 >= yBoundRectangle_2) || (yBound_2 >= yBoundRectangle_2 && yBound_2 <= yBoundRectangle_1)))
         {
-            var direction = Ball.position - rectangle.position;
-            if(Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
-            {
-                if (direction.x > 0)
-                    EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Left));
-                else
-                    EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Right));
-            }
+            if(rectangle.position.y+0.1f >= Ball.position.y + Ball.localScale.y/2 + rectangle.localScale.y/2)
+                EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Top));
+            else if(rectangle.position.y - 0.1f <= Ball.position.y - Ball.localScale.y / 2 - rectangle.localScale.y / 2)
+                EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Bottom));
+            else if(rectangle.position.x > Ball.position.x)
+                EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Right));
             else
-            {
-                if (direction.y > 0)
-                    EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Bottom));
-                else
-                    EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Top));
-            }
+                EventBus<EV_BallCollide>.Emit(rectangle.gameObject, new EV_BallCollide(BallCollisionSide.Left));
             return true;
         }
         return false;
