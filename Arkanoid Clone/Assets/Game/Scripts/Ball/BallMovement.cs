@@ -23,16 +23,20 @@ public class BallMovement
         switch (Side)
         {
             case BallCollisionSide.Left:
-                physic.velocity *= new Vector2(-1, 1);
+                physic.velocity = new Vector2(3, physic.velocity.y);
+                Debug.Log("GoingRight");
                 break;
             case BallCollisionSide.Right:
-                physic.velocity *= new Vector2(-1, 1);
+                physic.velocity = new Vector2(-3, physic.velocity.y);
+                Debug.Log("GoingLeft");
                 break;
             case BallCollisionSide.Bottom:
-                physic.velocity *= new Vector2(1, -1);
+                physic.velocity = new Vector2(physic.velocity.x, 3);
+                Debug.Log("GoingUp");
                 break;
             case BallCollisionSide.Top:
-                physic.velocity *= new Vector2(1, -1);
+                physic.velocity = new Vector2(physic.velocity.x, -3);
+                Debug.Log("GoingDown");
                 break;
             default:
                 break;

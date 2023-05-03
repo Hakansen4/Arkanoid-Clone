@@ -32,10 +32,6 @@ public class BorderController : MonoBehaviour,ICollisionable
     {
         CheckCollision();
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    _ShakeFeature.Shake();
-    //}
 
     public void CheckCollision()
     {

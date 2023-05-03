@@ -13,6 +13,7 @@ public class BoxController : MonoBehaviour,IPoolable,ICollisionable
     private ColorFeature _ColorFeature;
     private BoxDestroyAnim _DestroyFeature;
     private float DestroyAnimTime;
+    private bool isDead;
     public void Init(int tweenDistance,int TweenDuration,int MinTweenDuration,int MaxTweenDuration,float ShakeDuration,float ShakeStrength,Material Color,float DestroyAnimTime,Material DestroyColor)
     {
         _ShakeFeature = new ShakeFeature<EV_ShakeBox>(transform, ShakeDuration, ShakeStrength);
@@ -28,6 +29,7 @@ public class BoxController : MonoBehaviour,IPoolable,ICollisionable
     }
     public void Activate()
     {
+        isDead = false;
         gameObject.SetActive(true);
     }
 
@@ -49,17 +51,6 @@ public class BoxController : MonoBehaviour,IPoolable,ICollisionable
     {
         CheckCollision();
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    BoxesController.instance.BoxDeactivated(this);
-    //    if (!_DestroyFeature.Animate())
-    //    {
-    //        DeActivate();
-    //    }
-    //    else
-    //        StartCoroutine(DestroyAfterAnim());
-    //}
     private IEnumerator DestroyAfterAnim()
     {
         yield return new WaitForSeconds(DestroyAnimTime);
@@ -69,11 +60,12 @@ public class BoxController : MonoBehaviour,IPoolable,ICollisionable
 
     public void CheckCollision()
     {
-        if (ManuelCollision.CheckBallCollision(transform))
+        if (ManuelCollision.CheckBallCollision(transform)   &&  !isDead)
         {
             EventBus<EV_BallBlockCollide>.Emit(this, new EV_BallBlockCollide());
 
             BoxesController.instance.BoxDeactivated(this);
+            isDead = true;
             if (!_DestroyFeature.Animate())
             {
                 DeActivate();
