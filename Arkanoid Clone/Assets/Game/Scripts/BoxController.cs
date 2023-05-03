@@ -6,7 +6,7 @@ using Events.Features;
 using Events.Others;
 using System;
 
-public class BoxController : MonoBehaviour,IPoolable
+public class BoxController : MonoBehaviour,IPoolable,ICollisionable
 {
     public TweenFeatures _TweenFeature;
     private ShakeFeature<EV_ShakeBox> _ShakeFeature;
@@ -45,21 +45,42 @@ public class BoxController : MonoBehaviour,IPoolable
     {
         _ShakeFeature.Shake();
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
     {
-        BoxesController.instance.BoxDeactivated(this);
-        if (!_DestroyFeature.Animate())
-        {
-            DeActivate();
-        }
-        else
-            StartCoroutine(DestroyAfterAnim());
+        CheckCollision();
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    BoxesController.instance.BoxDeactivated(this);
+    //    if (!_DestroyFeature.Animate())
+    //    {
+    //        DeActivate();
+    //    }
+    //    else
+    //        StartCoroutine(DestroyAfterAnim());
+    //}
     private IEnumerator DestroyAfterAnim()
     {
         yield return new WaitForSeconds(DestroyAnimTime);
         _DestroyFeature.RestoreBoxValues();
         DeActivate();
+    }
+
+    public void CheckCollision()
+    {
+        if (ManuelCollision.CheckBallCollision(transform))
+        {
+            EventBus<EV_BallBlockCollide>.Emit(this, new EV_BallBlockCollide());
+
+            BoxesController.instance.BoxDeactivated(this);
+            if (!_DestroyFeature.Animate())
+            {
+                DeActivate();
+            }
+            else
+                StartCoroutine(DestroyAfterAnim());
+        }
+        
     }
 }

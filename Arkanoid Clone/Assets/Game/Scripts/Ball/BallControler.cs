@@ -68,6 +68,7 @@ public class BallControler : MonoBehaviour, IPoolable
 
     private void PlayCollisionFeatures(object sender, EV_BallCollide @event)
     {
+        _Movement.CollideMove(@event.side);
         _RotateFeature.SetRotation(_physic.velocity);
         _StretchFeature.AnimateStretch();
         _ScaleFeature.ScaleEffect();
@@ -77,6 +78,7 @@ public class BallControler : MonoBehaviour, IPoolable
     public void Activate()
     {
         gameObject.SetActive(true);
+        ManuelCollision.SetBallTransform(transform);
         _Movement.StartMovement();
     }
 

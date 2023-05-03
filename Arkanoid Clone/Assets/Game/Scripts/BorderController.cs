@@ -6,7 +6,7 @@ using Events.Features;
 using Ambrosia.EventBus;
 using System;
 
-public class BorderController : MonoBehaviour
+public class BorderController : MonoBehaviour,ICollisionable
 {
     private ShakeFeature<EV_ShakeBorder> _ShakeFeature;
     private ColorFeature _ColorFeature;
@@ -28,8 +28,22 @@ public class BorderController : MonoBehaviour
         _ShakeFeature.UnSubEvents();
         _ColorFeature.UnSubEvents();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
     {
-        _ShakeFeature.Shake();
+        CheckCollision();
+    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    _ShakeFeature.Shake();
+    //}
+
+    public void CheckCollision()
+    {
+        if (ManuelCollision.CheckBallCollision(transform))
+        {
+            EventBus<EV_BallWallCollide>.Emit(this, new EV_BallWallCollide());
+            
+            _ShakeFeature.Shake();
+        }
     }
 }

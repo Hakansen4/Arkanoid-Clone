@@ -143,8 +143,6 @@ GameObject:
   - component: {fileID: 9025964661040359601}
   - component: {fileID: 9025964661040359607}
   - component: {fileID: -4685972114961293597}
-  - component: {fileID: 5948672776943230797}
-  - component: {fileID: 9025964661040359605}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -255,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _physic: {fileID: 9025964661040359607}
   _renderer: {fileID: 9025964661040359601}
-  _Collision: {fileID: 5948672776943230797}
+  _Collision: {fileID: 0}
   HitColor: {fileID: 2100000, guid: baea3a3edd914104ebdac92114979f55, type: 2}
   ColorfulColor: {fileID: 2100000, guid: 95352acee4a830241b4ff65119be747f, type: 2}
   ScaleAnimSize: {x: 0.5, y: 0.5, z: 1}
@@ -264,41 +262,3 @@ MonoBehaviour:
   ParticleEffectPoolSize: 4
   _ParticleObject: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
   _TrailObject: {fileID: 8167124246417650950}
---- !u!114 &5948672776943230797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025964661040359602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f597169e6b5274285390263e8879dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &9025964661040359605
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025964661040359602}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0

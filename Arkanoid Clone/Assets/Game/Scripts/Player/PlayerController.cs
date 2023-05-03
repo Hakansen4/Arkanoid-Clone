@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ambrosia.EventBus;
+using Events.Others;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,ICollisionable
 {
     #region SerializeField Variables
     [Header("Movement")]
@@ -46,6 +48,10 @@ public class PlayerController : MonoBehaviour
         Movement.Move();
         _ElasticFeature.Animate(Movement.GetMovementDestination());
     }
+    private void FixedUpdate()
+    {
+        CheckCollision();
+    }
     private void OnEnable()
     {
         _TweenFeature.SubEvents();
@@ -64,5 +70,11 @@ public class PlayerController : MonoBehaviour
     public void StartGame()
     {
         Movement.StartMovement();
+    }
+
+    public void CheckCollision()
+    {
+        if (ManuelCollision.CheckBallCollision(transform))
+            EventBus<EV_BallPaddleCollide>.Emit(this, new EV_BallPaddleCollide());
     }
 }

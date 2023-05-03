@@ -18,4 +18,24 @@ public class BallMovement
         float y = Random.Range(0, 2) == 0 ? -1 : 1;
         physic.velocity = new Vector2(Speed * x, Speed * y);
     }
+    public void CollideMove(BallCollisionSide Side)
+    {
+        switch (Side)
+        {
+            case BallCollisionSide.Left:
+                physic.velocity *= new Vector2(-1, 1);
+                break;
+            case BallCollisionSide.Right:
+                physic.velocity *= new Vector2(-1, 1);
+                break;
+            case BallCollisionSide.Bottom:
+                physic.velocity *= new Vector2(1, -1);
+                break;
+            case BallCollisionSide.Top:
+                physic.velocity *= new Vector2(1, -1);
+                break;
+            default:
+                break;
+        }
+    }
 }
